@@ -2,7 +2,7 @@
 
 **Uploaded from GitLab **
 
-The video prsentation of this project demonstrating it fully implemented is available at: https://youtu.be/9e6BA2XxBbc
+The video presentation of this project demonstrating it fully implemented is available at: https://youtu.be/9e6BA2XxBbc
 
 October 2021 - November 2021
 
