@@ -1,6 +1,6 @@
 # EscapeRoomMapPuzzle
 
-**Uploaded from GitLab **
+**Uploaded from GitLab as part of ECE198 **
 
 The video presentation of this project demonstrating it fully implemented is available at: https://youtu.be/9e6BA2XxBbc
 
@@ -18,6 +18,8 @@ The code is designed to continuously loop, detect the right pin positions, and c
 
 Digital inputs include the reed switches and the joystick's button which only require an “on” or “off,”. Respective GPIO pins are initialized to input mode. For the joystick and photoresistor, a precise input voltage is required. The built-in ADC (analog-digital converter) reads the pins and acquires readable input.
 
+The output of the board is focused around the individually addressable LED strip and the 7 segement display. The 7 segements display is used only to output the first letter of the next location that must be pinned. The led strip is responsable for all other output to the user. The LEDs are driven using a pwm timer which is configured to be run by the DMA controller in order to make the operation of the LEDs non-blocking.
+
 **Reation Time **
 
 After the proper placement of the first two magnets, the reaction-time function is be called. In this challenge, all the LEDs on the strip are flashed, and any input on the joystick is checked for to see the user's reaction time. This is done by comparing the time of the LED flash and the user-input, using the SysTick. The software loops and continues flashing at arbitrary instances, checking if the user's reaction time is within a given interval.
@@ -28,7 +30,7 @@ Once the reaction-time challenge is completed, the software continuously checks 
 
 **Guitar Hero **
 
-Once the pattern-matching challenge is complete, the fourth pin locations are checked, and with the correct input, the guitar hero challenge function is be called. This challenge sends a random sequence of moving LEDs from the top of the map to the user, who must press the joystick when the LED is at the joystick. Using both the SysTick and an in-built timer from the STM32 Nucleo Board, the movement of the LEDs and the reading of the joystick input can both be done simultaneously. Once the user completes this challenge to 80% accuracy, the final location letter is displayed on the 7-segment.
+Once the pattern-matching challenge is complete, the fourth pin locations are checked, and with the correct input, the guitar hero challenge function is be called. This challenge sends a random sequence of moving LEDs from the top of the map to the user, who must press the joystick when the LED is at the joystick. Using hardware timer fired interupts, the movement of the LEDs and the reading of the joystick input can both be done simultaneously. Once the user completes this challenge to 80% accuracy, the final location letter is displayed on the 7-segment.
 
 **Photoresistor Morse Code **
 
